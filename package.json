@@ -1,0 +1,16 @@
+{
+  "name": "electron-tuto",
+  "version": "0.1.0",
+  "main": "app.js",
+  "devDependencies": {
+    "electron": "^1.4.14",
+    "electron-connect": "^0.6.1",
+    "electron-packager": "^8.5.0",
+    "gulp": "^3.9.1",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0"
+  }
+}

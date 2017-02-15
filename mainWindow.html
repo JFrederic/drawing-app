@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+     <button type="button" onclick="show()">Show second window</button>
+     <canvas id="canvas"  width="490" height="220"></canvas>
+     <ul style="list-style: none;">
+          <li class="demoToolList"><button id="clearCanvasSimple" onclick=clearCanvas() type="button">Clear</button></li>
+          <li>
+            <span class="highlight"></span>
+            <button id="choosePurpleSimpleColors" onclick=getIdColor(this.id) type="button">Purple</button>
+            <button id="chooseGreenSimpleColors"  onclick=getIdColor(this.id) type="button">Green</button>
+            <button id="chooseYellowSimpleColors" onclick=getIdColor(this.id) type="button">Yellow</button>
+            <button id="chooseBrownSimpleColors"  onclick=getIdColor(this.id) type="button">Brown</button>
+          </li>
+          <li><li>
+            <span class="highlight"></span>
+            <button id="chooseSmallSimpleSizes" onclick=getIdSize(this.id) type="button">Small</button>
+            <button id="chooseNormalSimpleSizes"onclick=getIdSize(this.id) type="button">Normal</button>
+            <button id="chooseLargeSimpleSizes" onclick=getIdSize(this.id) type="button">Large</button>
+            <button id="chooseHugeSimpleSizes"  onclick=getIdSize(this.id) type="button">Huge</button></li>
+          </li>
+          <!--<li>
+            <li><span class="highlight"></span>
+            <button id="chooseCrayonSimpleTools" type="button">Crayon</button>
+            <button id="chooseMarkerSimpleTools" type="button">Marker</button>
+            <button id="chooseEraserSimpleTools" type="button">Eraser</button>
+            </li>
+          </li>-->
+      </ul>
+    
+  </body>
+
+  <script>
+    const {ipcRenderer} = require('electron')
+    function show(){
+        ipcRenderer.send('show-second');  //dispatch the event 'show-second' to the main process
+    }
+  </script>
+  
+  <script src="canvas.js"></script>
+</html>
