@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body>
-      <ul style="list-style: none;">
+     <ul style="list-style: none;">
           <li class="demoToolList"><button id="clearCanvasSimple" onclick=clearCanvas() type="button">Clear</button></li>
           <li>
             <span class="highlight"></span>
@@ -22,21 +22,17 @@
             <button id="chooseLargeSimpleSizes" onclick=getIdSize(this.id) type="button">Large</button>
             <button id="chooseHugeSimpleSizes"  onclick=getIdSize(this.id) type="button">Huge</button></li>
           </li>
-          <!--<li>
+          <li>
             <li><span class="highlight"></span>
             <button id="chooseCrayonSimpleTools" type="button">Crayon</button>
             <button id="chooseMarkerSimpleTools" type="button">Marker</button>
             <button id="chooseEraserSimpleTools" type="button">Eraser</button>
             </li>
-          </li>-->
+          </li>
       </ul>
+    
   </body>
-  <script src="canvas.js"></script>
-  <script>
-    const {ipcRenderer} = require('electron')
-     function color(){
-        ipcRenderer.send('color' , 'clearCanvasSimple');
-    }
-  </script>
+  <script src="second.js"></script>
+
   
 </html>

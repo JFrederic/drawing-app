@@ -71,57 +71,38 @@ function addClick(x, y, dragging) {
   clickY.push(y);
   clickDrag.push(dragging);
 
-
-  if (id_color == "chooseGreenSimpleColors") {
-    curColor = colorGreen
-  }
-  else if (id_color == "chooseBrownSimpleColors") {
-    curColor = colorBrown
-  }
-  else if (id_color == "chooseYellowSimpleColors") {
-    curColor = colorYellow
-  }
-  else if (id_color == "choosePurpleSimpleColors") {
-    curColor = colorPurple
-  }
-
   if (curTool == "eraser") {
     clickColor.push("white");
   } else {
     clickColor.push(curColor)
   }
 
-
-  if (id_size == "chooseSmallSimpleSizes") {
-    curSize = "small"
-  }
-  else if (id_size == "chooseNormalSimpleSizes") {
-    curSize = "normal"
-  }
-  else if (id_size == "chooseLargeSimpleSizes") {
-    curSize = "large"
-  }
-  else if (id_size == "chooseHugeSimpleSizes") {
-    curSize = "huge"
-  }
-
-  console.log(clickColor)
   clickSize.push(curSize);
 }
+
+// Get new alteration command from the toolbox
+
+ipcRenderer.on('color', (event, newColor) => {
+  curColor = newColor
+})
+
+ipcRenderer.on('size',(event,newSize)=>{
+  curSize = newSize
+})
 
 
 
 //  Clears the canvas.
+ ipcRenderer.send('clear',context)
 
-function clearCanvas() {
-  
-  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-  
-}
+
+
 
 function redraw() {
 
-  clearCanvas();
+  ipcRenderer.on('clearCanvas',(event,clearCanvas)=>{
+    clearCanvas();
+   })
 
 
   context.strokeStyle = "#df4b26";
@@ -159,5 +140,5 @@ function redraw() {
     context.globalAlpha = 1;
 
   }
-  
+
 }

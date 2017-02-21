@@ -1,5 +1,5 @@
 //app.js
-const {electron,ipcRenderer} = require('electron')
+const electron= require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain;
@@ -8,7 +8,7 @@ const url = require('url')
 
 let mainWindow
 let secondWindow
-
+                        
 function createWindow () {
   // Create 1st window
   mainWindow = new BrowserWindow({width: 800, height: 600})
@@ -63,6 +63,18 @@ ipcMain.on('show-second',(event, arg)=>{
   secondWindow.show()
 })
 
-ipcMain.on('toolbox',(event,arg)=>{
-  mainWindow.show()
+ipcMain.on('color', (event,newColor)=>{
+  mainWindow.webContents.send('color', newColor)
+})
+
+ipcMain.on('size', (event,newSize)=>{
+  mainWindow.webContents.send('size',newSize)
+})
+
+ipcMain.on('clear', (event,context)=>{
+  mainWindow.webContents.send('clear',context)
+})
+
+ipcMain.on('clearCanvas', (event,clearCanvas) =>{
+  mainWindow.webContents.send('clearCanvas',clearCanvas())
 })
